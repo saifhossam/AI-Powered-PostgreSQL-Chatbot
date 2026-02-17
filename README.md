@@ -43,6 +43,7 @@ Built using:
 ├── deploy.py         # Upload CSV files to PostgreSQL
 ├── examples.py       # Few-shot examples for RAG
 ├── .env              # Environment variables
+├── data.csv              # tables' files in csv
 └── README.md
 ```
 
@@ -61,7 +62,6 @@ cd your-repo
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # mac/linux
 venv\Scripts\activate     # windows
 ```
 
@@ -69,16 +69,6 @@ venv\Scripts\activate     # windows
 
 ```bash
 pip install -r requirements.txt
-```
-
-If you don’t have requirements.txt, install manually:
-
-```bash
-pip install streamlit langchain langchain-community langchain-core
-pip install langchain-google-genai
-pip install sqlalchemy psycopg2-binary
-pip install chromadb sentence-transformers
-pip install python-dotenv pandas
 ```
 
 ---
