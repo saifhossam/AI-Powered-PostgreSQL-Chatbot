@@ -4,6 +4,7 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
 import re
+import json
 
 # LangChain
 from langchain_google_genai import GoogleGenerativeAI
@@ -15,7 +16,6 @@ from langchain_core.example_selectors import SemanticSimilarityExampleSelector
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
-from examples import examples
 
 # ---------------- CONFIG ----------------
 load_dotenv()
@@ -73,10 +73,29 @@ llm = load_llm()
 embeddings = load_embeddings()
 
 
+# ---------------- LOAD FEW SHOTS FROM JSON ----------------
+@st.cache_resource
+def load_examples_from_json():
+    with open("fewshots.json", "r", encoding="utf-8") as f:
+        raw_examples = json.load(f)
+
+    # Convert to required format
+    formatted_examples = [
+        {
+            "question": ex["naturalQuestion"],
+            "sql": ex["sqlQuery"]
+        }
+        for ex in raw_examples
+    ]
+
+    return formatted_examples
+
+
 # ---------------- RAG FEW SHOT ----------------
 @st.cache_resource
 def load_example_selector():
-    # Create vector store from example questions
+    examples = load_examples_from_json()
+
     vectorstore = Chroma.from_texts(
         texts=[ex["question"] for ex in examples],
         embedding=embeddings,
@@ -85,7 +104,7 @@ def load_example_selector():
 
     selector = SemanticSimilarityExampleSelector(
         vectorstore=vectorstore,
-        k=3  # Number of similar examples to retrieve
+        k=5
     )
 
     return selector
