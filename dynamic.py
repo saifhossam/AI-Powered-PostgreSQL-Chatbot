@@ -102,16 +102,13 @@ def load_example_selector():
         metadatas=examples
     )
 
-    selector = SemanticSimilarityExampleSelector(
-        vectorstore=vectorstore,
-        k=5
-    )
-
+    selector = SemanticSimilarityExampleSelector(vectorstore=vectorstore, k=5)
     return selector
 
 
 example_selector = load_example_selector()
 
+# ---------------- FEW-SHOT EXAMPLE FORMAT ----------------
 example_prompt = PromptTemplate(
     input_variables=["question", "sql"],
     template="""
@@ -123,6 +120,8 @@ SQL Query:
 """
 )
 
+
+# ----------- SYSTEM INSTRUCTIONS / RULES -----------
 dynamic_prompt = FewShotPromptTemplate(
     example_selector=example_selector,
     example_prompt=example_prompt,
