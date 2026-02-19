@@ -41,7 +41,7 @@ Built using:
 ├── dynamic.py        # RAG + Dynamic Few-Shot chatbot
 ├── agent toolkit.py  # SQL Agent using Ollama
 ├── deploy.py         # Upload CSV files to PostgreSQL
-├── examples.py       # Few-shot examples for RAG
+├── fewshots.json       # Few-shot examples for RAG
 ├── .env              # Environment variables
 ├── data.csv              # tables' files in csv
 └── README.md
