@@ -4,7 +4,7 @@ from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits import create_sql_agent
 
 # Set your API key
-os.environ["GOOGLE_API_KEY"] = "AIzaSyCYAZINSAUfVi7aMv59aT2nfRzAkwTMHjU"
+os.environ["GOOGLE_API_KEY"] = ""
 
 # Connect to DB
 db = SQLDatabase.from_uri(
