@@ -6,7 +6,7 @@ This project demonstrates three different approaches:
 
 1. 🔹 Basic LLM → SQL Generator
 2. 🔹 Dynamic Few-Shot + RAG (Semantic Example Selection)
-3. 🔹 SQL Agent (Tool-Using Agent with local LLM)
+3. 🔹 SQL Agent (Tool-Using Agent with LLM)
 
 Built using:
 
@@ -16,8 +16,6 @@ Built using:
 * Google Gemini
 * HuggingFace Embeddings
 * Chroma Vector Store
-* Ollama (Local LLM option)
-
 ---
 
 ## 🚀 Features
@@ -30,7 +28,6 @@ Built using:
 * ✅ Natural language answer generation
 * ✅ SQL safety (SELECT only)
 * ✅ Streamlit UI
-* ✅ Local LLM support via Ollama
 
 ---
 
@@ -39,7 +36,7 @@ Built using:
 ```
 ├── basic.py          # Basic NL → SQL chatbot
 ├── dynamic.py        # RAG + Dynamic Few-Shot chatbot
-├── agent toolkit.py  # SQL Agent using Ollama
+├── agent_toolkit.py  # SQL Agent using Ollama
 ├── deploy.py         # Upload CSV files to PostgreSQL
 ├── fewshots.json       # Few-shot examples for RAG
 ├── .env              # Environment variables
@@ -153,12 +150,11 @@ LLM → Natural Language Answer
 Run:
 
 ```bash
-python "agent toolkit.py"
+python "agent_toolkit.py"
 ```
 
 Uses:
 
-* Ollama local LLM (llama3 / mistral)
 * LangChain SQL Agent
 * Autonomous tool usage
 
@@ -178,7 +174,6 @@ ollama pull llama3
 * Google Gemini (gemini-2.5-flash)
 * Hugging Face Embeddings
 * Chroma Vector Store
-* Ollama
 
 ---
 
